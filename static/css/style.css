@@ -1,0 +1,13 @@
+.flashes h4 {
+    line-height: 2;
+}
+
+body {
+    background-image: url("../images/background.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}

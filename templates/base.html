@@ -22,13 +22,13 @@
 				<a href="#" class="brand-logo"><img src="../static/images/logo.png" width="140" height="auto"></a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right black-text"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a class ="black-text" href="#">Profile</a></li>
+					<li><a class ="black-text" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a class ="black-text" href="#">Manage Tasks</a></li>
                     <li><a class ="black-text" href="#">Completed Tasks</a></li>
                     <li><a class ="black-text" href="#">Add Task</a></li>
                     <li><a class ="black-text" href="#">Manage Task Types</a></li>
                     <li><a class ="black-text" href="#">Manage Sites</a></li>
-                    <li><a class ="black-text" href="#">Logout</a></li>
+                    <li><a class ="black-text" href="{{ url_for('logout') }}">Logout</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -36,13 +36,13 @@
         <!-- mobile sidenav -->
 		<ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align black-text text-darken 4">Site Task Manager</h4></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="#">Manage Tasks</a></li>
             <li><a href="#">Completed Tasks</a></li>
             <li><a href="#">Add Task</a></li>
             <li><a href="#">Manage Task Types</a></li>
             <li><a href="#">Manage Sites</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
 	</header>
 

@@ -11,7 +11,13 @@ body {
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     font-family: 'Comfortaa', sans-serif;
+    min-height: 100vh;
+   
 }
+
+main {
+    flex: 1 0 auto;
+  }
 
 span {
     background-color: rgba(255,255,255, 0.75);
@@ -37,5 +43,9 @@ span {
 .brand-logo {
     margin-top: 5px;
     margin-left: 5px;
+}
+
+.page-footer {
+    background-color: rgba(255,255,255, 0.75);
 }
 

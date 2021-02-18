@@ -15,10 +15,6 @@ body {
    
 }
 
-main {
-    flex: 1 0 auto;
-  }
-
 span {
     background-color: rgba(255,255,255, 0.75);
 }

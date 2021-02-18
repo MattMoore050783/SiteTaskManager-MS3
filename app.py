@@ -91,7 +91,49 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/get_sites")
+def get_sites():
+    sites = list(mongo.db.sites.find().sort("site_name", 1))
+    return render_template("sites.html", sites=sites)
+
+
+@app.route("/add_site", methods=["GET", "POST"])
+def add_site():
+    if request.method == "POST":
+        site = {
+            "site_name": request.form.get("site_name")
+        }
+        mongo.db.sites.insert_one(site)
+        flash("New Site Added")
+        return redirect(url_for("get_sites"))
+
+    return render_template("add_site.html")
+
+
+@app.route("/edit_site/<site_id>", methods=["GET", "POST"])
+def edit_site(site_id):
+    if request.method == "POST":
+        submit = {
+            "site_name": request.form.get("site_name")
+        }
+        mongo.db.sites.update({"_id": ObjectId(site_id)}, submit)
+        flash("Site Successfully Updated")
+        return redirect(url_for("get_sites"))
+
+    site = mongo.db.sites.find_one({"_id": ObjectId(site_id)})
+    return render_template("edit_site.html", site=site)
+
+
+@app.route("/delete_site/<site_id>")
+def delete_site(site_id):
+    mongo.db.sites.remove({"_id": ObjectId(site_id)})
+    flash("Site Successfully Deleted")
+    return redirect(url_for("get_sites"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+
+        

@@ -131,6 +131,46 @@ def delete_site(site_id):
     return redirect(url_for("get_sites"))
 
 
+@app.route("/get_tasktypes")
+def get_tasktypes():
+    tasktypes = list(mongo.db.tasktypes.find().sort("tasktype_name", 1))
+    return render_template("tasktypes.html", tasktypes=tasktypes)
+
+
+@app.route("/add_tasktype", methods=["GET", "POST"])
+def add_tasktype():
+    if request.method == "POST":
+        tasktype = {
+            "tasktype_name": request.form.get("tasktype_name")
+        }
+        mongo.db.tasktypes.insert_one(tasktype)
+        flash("New Tasktype Added")
+        return redirect(url_for("get_tasktypes"))
+
+    return render_template("add_tasktype.html")
+
+
+@app.route("/edit_tasktype/<tasktype_id>", methods=["GET", "POST"])
+def edit_tasktype(tasktype_id):
+    if request.method == "POST":
+        submit = {
+            "tasktype_name": request.form.get("tasktype_name")
+        }
+        mongo.db.tasktypes.update({"_id": ObjectId(tasktype_id)}, submit)
+        flash("Tasktype Successfully Updated")
+        return redirect(url_for("get_tasktypes"))
+
+    tasktype = mongo.db.tasktypes.find_one({"_id": ObjectId(tasktype_id)})
+    return render_template("edit_tasktype.html", tasktype=tasktype)
+
+
+@app.route("/delete_tasktype/<tasktype_id>")
+def delete_tasktype(tasktype_id):
+    mongo.db.tasktypes.remove({"_id": ObjectId(tasktype_id)})
+    flash("Tasktype Successfully Deleted")
+    return redirect(url_for("get_tasktypes"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -26,8 +26,8 @@
                     <li><a class ="black-text" href="#">Manage Tasks</a></li>
                     <li><a class ="black-text" href="#">Completed Tasks</a></li>
                     <li><a class ="black-text" href="#">Add Task</a></li>
-                    <li><a class ="black-text" href="#">Manage Task Types</a></li>
-                    <li><a class ="black-text" href="#">Manage Sites</a></li>
+                    <li><a class ="black-text" href="{{ url_for('get_tasktypes') }}">Manage Tasktypes</a></li>
+                    <li><a class ="black-text" href="{{ url_for('get_sites') }}">Manage Sites</a></li>
                     <li><a class ="black-text" href="{{ url_for('logout') }}">Logout</a></li>
 				</ul>
 			</div>
@@ -40,8 +40,8 @@
             <li><a href="#">Manage Tasks</a></li>
             <li><a href="#">Completed Tasks</a></li>
             <li><a href="#">Add Task</a></li>
-            <li><a href="#">Manage Task Types</a></li>
-            <li><a href="#">Manage Sites</a></li>
+            <li><a href="{{ url_for('get_tasktypes') }}">Manage Tasktypes</a></li>
+            <li><a href="{{ url_for('get_sites') }}">Manage Sites</a></li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
 	</header>

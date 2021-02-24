@@ -3,14 +3,11 @@
 }
 
 body {
-    background-image: url("../images/background.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-size: 100vw, 200vh;
     font-family: 'Comfortaa', sans-serif;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    height: 100%;
+    
     
 }
   

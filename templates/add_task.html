@@ -18,6 +18,23 @@
 					<label for="tasktype_name">Tasktype</label>
 				</div>
             </div>
+            <!-- task description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-tasks prefix black-text text-darken-4"></i>
+                    <textarea id="task_description" name="task_description" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="task_description">Task Description</label>
+                </div>
+            </div>
+             <!-- due date-->
+             <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar-check prefix black-text text-darken-4"></i>
+                    <input id="due_date" name="due_date" type="text" class="datepicker validate" required>
+                    <label for="due_date">Due Date</label>
+                </div>
+            </div>
             <!-- Username -->
             <div class="row">
 				<div class="input-field col s12">
@@ -43,7 +60,26 @@
                     </select>
 					<label for="site_name">Site</label>
 				</div>
-			</div>
+            </div>
+            <!--  -->
+            <div class="row">
+                <div class="input-field col m3 s12">
+					<div class="switch">
+                        <i class="fas fa-clipboard-check prefix black-text text-darken-4"></i>
+						<label for="is_complete">
+                            <input type="checkbox" id="is_complete" name="is_complete">
+                            <span class="lever"></span>
+                            Is Complete
+                        </label>
+					</div>
+				</div>
+                <div class="input-field col m9 s12">
+                    <i class="fas fa-sticky-note prefix black-text text-darken-4"></i>
+                    <textarea id="completion_notes" name="completion_notes" minlength="2"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="completion_notes">Completion Notes</label>
+                </div>
+            </div>
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">

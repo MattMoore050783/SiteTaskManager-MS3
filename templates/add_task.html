@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="black-text text-darken-4 center-align">Add Task</h3>
+
+    <div class="row card-panel">
+        <form class="col s12" method="POST" action="{{ url_for('add_task') }}">
+            <!-- Tasktype -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix black-text text-darken-4"></i>
+					<select id="tasktype_name" name="tasktype_name" class="validate" required>
+                        <option value="" disabled selected>Choose Tasktype</option>
+                        {% for tasktype in tasktypes %}
+                            <option value="{{ tasktype.tasktype_name }}">{{ tasktype.tasktype_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="tasktype_name">Tasktype</label>
+				</div>
+            </div>
+            <!-- Username -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix black-text text-darken-4"></i>
+					<select id="username" name="username" class="validate" required>
+                        <option value="" disabled selected>Choose User</option>
+                        {% for username in usernames %}
+                            <option value="{{ username.username }}">{{ username.username }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="username">Username</label>
+				</div>
+            </div>
+            <!-- site -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix black-text text-darken-4"></i>
+					<select id="site_name" name="site_name" class="validate" required>
+                        <option value="" disabled selected>Choose Site</option>
+                        {% for site in sites %}
+                            <option value="{{ site.site_name }}">{{ site.site_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="site_name">Site</label>
+				</div>
+			</div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large green accent-4 text-shadow">
+                        Submit <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

@@ -90,6 +90,13 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+@app.route("/add_task")
+def add_task():
+    tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
+    usernames = mongo.db.users.find().sort("username", 1)
+    sites = mongo.db.sites.find().sort("site_name", 1)
+    return render_template("add_task.html", tasktypes=tasktypes, usernames=usernames, sites=sites)
+
 
 @app.route("/get_sites")
 def get_sites():

@@ -90,8 +90,22 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-@app.route("/add_task")
+@app.route("/add_task", methods=["GET", "POST"])
 def add_task():
+    if request.method == "POST":
+        is_complete = "yes" if request.form.get("is_complete") else "no"
+        task = {
+            "tasktype": request.form.get("tasktype_name"),
+            "task_description": request.form.get("task_description"),
+            "due_date": request.form.get("due_date"),
+            "username": request.form.get("username"),
+            "site": request.form.get("site_name"),
+            "is_complete": is_complete,
+            "completion_notes": request.form.get("completion_notes"),
+        }
+        mongo.db.tasks.insert_one(task)
+        flash("Task Successfully Added")
+        
     tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
     usernames = mongo.db.users.find().sort("username", 1)
     sites = mongo.db.sites.find().sort("site_name", 1)

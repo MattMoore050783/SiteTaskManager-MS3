@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
-   
+<h3 class="black-text text-darken-4 center-align">Manage Tasks - {{ session["user"] }}</h3> 
+
+{% for task in tasks %}
+    {{ task.tasktype }} <br>
+    {{ task.task_description }} <br>
+    {{ task.due_date }} <br>
+    {{ task.username }} <br>
+    {{ task.site }} <br>
+    {{ task.is_complete }} <br>
+    {{ task.completion_notes }} <br>
+<p> </p>
+{% endfor %}
+
 
 {% endblock %}

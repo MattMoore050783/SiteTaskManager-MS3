@@ -90,6 +90,21 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
+@app.route("/")
+@app.route("/get_tasksadmin")
+def get_tasksadmin():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("tasks_admin.html", tasks=tasks)
+
+
+@app.route("/")
+@app.route("/get_tasksuser")
+def get_tasksuser():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("tasks_user.html", tasks=tasks)
+
+
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":

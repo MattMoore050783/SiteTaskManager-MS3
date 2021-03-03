@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-   
+<h3 class="black-text text-darken-4 center-align">Manage Tasks - {{ session["user"] }}</h3> 
+
+{% for task in tasks%}
+    {% if session.user|lower == task.username|lower and task.is_complete == "yes" %}
+    {{ task.tasktype }} <br>
+    {{ task.task_description }} <br>
+    {{ task.due_date }} <br>
+    {{ task.username }} <br>
+    {{ task.site }} <br>
+    {{ task.is_complete }} <br>
+    {{ task.completion_notes }} <br>
+    <p> </p>
+    {% endif %}
+{% endfor %}
+
 
 {% endblock %}

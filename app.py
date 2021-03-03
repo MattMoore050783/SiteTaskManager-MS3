@@ -105,6 +105,20 @@ def get_tasksuser():
     return render_template("tasks_user.html", tasks=tasks)
 
 
+@app.route("/")
+@app.route("/completedtasksuser")
+def completedtasksuser():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("completed_tasks_user.html", tasks=tasks)
+
+
+@app.route("/")
+@app.route("/completedtasksadmin")
+def completedtasksadmin():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("completed_tasks_admin.html", tasks=tasks)
+
+
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":

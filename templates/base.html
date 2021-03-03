@@ -24,7 +24,7 @@
 				<ul class="right hide-on-med-and-down">
 					<li><a class ="black-text" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a class ="black-text" href="{{ url_for('get_tasksadmin') }}">Manage Tasks</a></li>
-                    <li><a class ="black-text" href="#">Completed Tasks</a></li>
+                    <li><a class ="black-text" href="{{ url_for('completedtasksadmin') }}">Completed Tasks</a></li>
                     <li><a class ="black-text" href="{{ url_for('add_task') }}">Add Task</a></li>
                     <li><a class ="black-text" href="{{ url_for('get_tasktypes') }}">Manage Tasktypes</a></li>
                     <li><a class ="black-text" href="{{ url_for('get_sites') }}">Manage Sites</a></li>
@@ -38,7 +38,7 @@
             <li><h4 class="center-align black-text text-darken 4">Site Task Manager</h4></li>
             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="{{ url_for('get_tasksadmin') }}">Manage Tasks</a></li>
-            <li><a href="#">Completed Tasks</a></li>
+            <li><a href="{{ url_for('completedtasksadmin') }}">Completed Tasks</a></li>
             <li><a href="{{ url_for('add_task') }}">Add Task</a></li>
             <li><a href="{{ url_for('get_tasktypes') }}">Manage Tasktypes</a></li>
             <li><a href="{{ url_for('get_sites') }}">Manage Sites</a></li>
@@ -55,7 +55,7 @@
 				<ul class="right hide-on-med-and-down">
 					<li><a class ="black-text" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a class ="black-text" href="{{ url_for('get_tasksuser') }}">Manage Tasks</a></li>
-                    <li><a class ="black-text" href="#">Completed Tasks</a></li>
+                    <li><a class ="black-text" href="{{ url_for('completedtasksuser') }}">Completed Tasks</a></li>
                     <li><a class ="black-text" href="{{ url_for('logout') }}">Logout</a></li>
 				</ul>
 			</div>
@@ -66,7 +66,7 @@
             <li><h4 class="center-align black-text text-darken 4">Site Task Manager</h4></li>
             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="{{ url_for('get_tasksuser') }}">Manage Tasks</a></li>
-            <li><a href="#">Completed Tasks</a></li>
+            <li><a href="{{ url_for('completedtasksuser') }}">Completed Tasks</a></li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
 		</ul>
     </header>

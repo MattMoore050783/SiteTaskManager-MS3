@@ -3,17 +3,36 @@
 
 <h3 class="black-text text-darken-4 center-align">Manage Tasks</h3>  
 
-{% for task in tasks %}
-    {% if task.is_complete == "no" %}     
-{{ task.tasktype }} <br>
-{{ task.task_description }} <br>
-{{ task.due_date }} <br>
-{{ task.username }} <br>
-{{ task.site }} <br>
-{{ task.is_complete }} <br>
-{{ task.completion_notes }} <br>
-<p> </p>
-    {% endif %} 
+{% for task in tasks%}
+<ul class = "collapsible popout" data-collapsible = "accordion">
+    {% if task.is_complete == "no" %}
+    <li>
+       <div class = "collapsible-header dropdown">
+            <i class="fas fa-caret-down"></i> 
+                <div class="container">
+                    <div>
+                    <b>Tasktype:</b><div class="dropdown-menu">{{ task.tasktype }}</div>
+                    </div>
+                    <div>
+                    <b>Username:</b><div class="dropdown-menu">{{ task.username }}</div>
+                    </div>
+                    <div>
+                    <b>Site:</b><div class="dropdown-menu"> {{ task.site }} </div>
+                    </div>
+                    <div>
+                    <b>Due Date:</b> <div class="dropdown-menu">{{ task.due_date }}  </div>
+                    </div>
+                </div>
+       </div>
+       <div class = "collapsible-body dropdown">
+        <div class="col l12>">
+            <b>Task Description:</b> <div class="dropdown-menu">{{ task.task_description }}  </div>
+            </div>
+            
+       </div>
+    </li>
+    {% endif %}
+</ul>
 {% endfor %}
 
 

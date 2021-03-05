@@ -71,3 +71,7 @@ h3 {
     border:1px solid black;
     padding: 2px;
 }
+
+.btn-small {
+    margin-top: 5px;
+}

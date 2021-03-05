@@ -23,8 +23,12 @@
        <div class = "collapsible-body dropdown">
         <div class="col l12>">
             <b>Task Description:</b> <div class="dropdown-menu">{{ task.task_description }}  </div>
+        </div>
+            <div class="card-action right-align">
+            <a href="{{ url_for('complete_task', task_id=task._id) }}" class="btn-small green">Complete</a>
             </div>
-       </div>
+        </div>
+        
     </li>
     {% endif %}
 </ul>

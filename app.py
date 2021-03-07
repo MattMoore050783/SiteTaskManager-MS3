@@ -169,7 +169,7 @@ def complete_task(task_id):
     if request.method == "POST":
         is_complete = "yes" if request.form.get("is_complete") else "no"
         submit = {
-           "tasktype": request.form.get("tasktype_name"),
+            "tasktype": request.form.get("tasktype_name"),
             "task_description": request.form.get("task_description"),
             "due_date": request.form.get("due_date"),
             "username": request.form.get("username"),
@@ -179,17 +179,17 @@ def complete_task(task_id):
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Completed")
-
+        
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
-    usernames = mongo.db.users.find().sort("username", 1)
-    sites = mongo.db.sites.find().sort("site_name", 1)
-    return render_template("edit_task.html", task=task, tasktypes=tasktypes, usernames=usernames, sites=sites)
+    
+    return render_template("complete_task.html", task=task)
 
 
-@app.route("/delete_task")
-def delete_task():
-    return render_template("complete_task.html")  
+@app.route("/delete_task/<task_id>")
+def delete_task(task_id):
+    mongo.db.tasks.remove({"_id": ObjectId(task_id)})
+    flash("Task Successfully Deleted")
+    return redirect(url_for("get_tasksadmin"))
 
 
 @app.route("/get_sites")

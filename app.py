@@ -134,6 +134,7 @@ def add_task():
         }
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added")
+        return redirect(url_for("get_tasksadmin"))
         
     tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
     usernames = mongo.db.users.find().sort("username", 1)
@@ -164,8 +165,8 @@ def edit_task(task_id):
     return render_template("edit_task.html", task=task, tasktypes=tasktypes, usernames=usernames, sites=sites)
 
 
-@app.route("/complete_task/<task_id>", methods=["GET", "POST"])
-def complete_task(task_id):
+@app.route("/app_user/<task_id>", methods=["GET", "POST"])
+def complete_task_user(task_id):
     if request.method == "POST":
         is_complete = "yes" if request.form.get("is_complete") else "no"
         submit = {
@@ -179,10 +180,33 @@ def complete_task(task_id):
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Completed")
+        return redirect(url_for("get_tasksuser"))
         
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     
-    return render_template("complete_task.html", task=task)
+    return render_template("complete_task_user.html", task=task)
+
+
+@app.route("/complete_task_admin/<task_id>", methods=["GET", "POST"])
+def complete_task_admin(task_id):
+    if request.method == "POST":
+        is_complete = "yes" if request.form.get("is_complete") else "no"
+        submit = {
+            "tasktype": request.form.get("tasktype_name"),
+            "task_description": request.form.get("task_description"),
+            "due_date": request.form.get("due_date"),
+            "username": request.form.get("username"),
+            "site": request.form.get("site_name"),
+            "is_complete": is_complete,
+            "completion_notes": request.form.get("completion_notes"),
+        }
+        mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
+        flash("Task Successfully Completed")
+        return redirect(url_for("get_tasksadmin"))
+
+    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    
+    return render_template("complete_task_admin.html", task=task)
 
 
 @app.route("/delete_task/<task_id>")

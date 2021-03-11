@@ -4,7 +4,7 @@
     <h3 class="black-text text-darken-4 center-align">Complete Task</h3>
 
     <div class="row card-panel">
-        <form class="col s12" method="POST" action="{{ url_for('complete_task_admin', task_id=task._id) }}">
+        <form class="col s12" method="POST" action="{{ url_for('complete_task', task_id=task._id) }}">
             
             <!-- Tasktype -->
             <div class="row">
@@ -92,7 +92,7 @@
                     <button type="submit" class="btn-large green accent-4">
                         Complete <i class="fas fa-plus-square right"></i>
                     </button>
-                    <a href="{{ url_for('get_tasksadmin') }}" class="btn-large red">
+                    <a href="{{ url_for('get_tasks') }}" class="btn-large red">
                         Cancel <i class="fas fa-times-circle right"></i> 
                     </a>
                 </div>

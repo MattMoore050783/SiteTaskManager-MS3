@@ -93,14 +93,15 @@ def logout():
 
 @app.route("/")
 @app.route("/get_tasks")
-def get_tasksadmin():
+def get_tasks():
+    
     tasks = list(mongo.db.tasks.find())
-    return render_template("tasks_admin.html", tasks=tasks)
+    return render_template("tasks.html", tasks=tasks)
 
 
 @app.route("/")
 @app.route("/completedtasks")
-def completedtasksuser():
+def completedtasks():
     tasks = list(mongo.db.tasks.find())
     return render_template("completed_tasks.html", tasks=tasks)
 

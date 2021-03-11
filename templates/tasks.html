@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="black-text text-darken-4 center-align">Manage Tasks - {{ session["user"] }}</h3> 
+<h3 class="black-text text-darken-4 center-align">Manage Tasks</h3>  
+
 {% for task in tasks%}
 <ul class = "collapsible popout" data-collapsible = "accordion">
-    {% if session.user|lower == task.username|lower and task.is_complete == "no" %}
+    {% if task.is_complete == False %}
     <li>
        <div class = "collapsible-header dropdown">
             <i class="fas fa-caret-down"></i> 
                 <div class="container">
                     <div>
                     <b>Tasktype:</b><div class="dropdown-menu">{{ task.tasktype }}</div>
+                    </div>
+                    <div>
+                    <b>Username:</b><div class="dropdown-menu">{{ task.username }}</div>
                     </div>
                     <div>
                     <b>Site:</b><div class="dropdown-menu"> {{ task.site }} </div>
@@ -21,12 +25,15 @@
                 </div>
        </div>
        <div class = "collapsible-body dropdown">
-        <div class="col l12>">
+            <div class="col l12>">
             <b>Task Description:</b> <div class="dropdown-menu">{{ task.task_description }}  </div>
-        </div>
-            <div class="card-action right-align">
-            <a href="{{ url_for('complete_task_user', task_id=task._id) }}" class="btn-small green">Complete</a>
             </div>
+                <div class="card-action right-align">
+                <a href="{{ url_for('complete_task', task_id=task._id) }}" class="btn-small green">Complete</a>
+                <a href="{{ url_for('edit_task', task_id=task._id) }}" class="btn-small orange black-text">Edit</a>
+                <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn-small red darken-1">Delete</a>
+                </div>
+            
         </div>
         
     </li>

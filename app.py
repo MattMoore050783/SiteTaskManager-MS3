@@ -61,7 +61,8 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "role": "user"
         }
         mongo.db.users.insert_one(register)
 
@@ -94,7 +95,6 @@ def logout():
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
-    
     tasks = list(mongo.db.tasks.find())
     return render_template("tasks.html", tasks=tasks)
 
@@ -178,7 +178,7 @@ def complete_task(task_id):
 def delete_task(task_id):
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
-    return redirect(url_for("get_tasksadmin"))
+    return redirect(url_for("get_tasks"))
 
 
 @app.route("/get_sites")

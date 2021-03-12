@@ -5,7 +5,6 @@
 
 {% for task in tasks%}
 <ul class = "collapsible popout" data-collapsible = "accordion">
-    {% if task.is_complete == False %}
     <li>
        <div class = "collapsible-header dropdown">
             <i class="fas fa-caret-down"></i> 
@@ -37,7 +36,7 @@
         </div>
         
     </li>
-    {% endif %}
+
 </ul>
 {% endfor %}
 

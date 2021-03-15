@@ -35,7 +35,7 @@ def login():
                         flash("Welcome, {}".format(
                             request.form.get("username")))
                         return redirect(url_for(
-                            "profile", username=session["user"], existing_user=existing_user))
+                            "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -129,7 +129,7 @@ def add_task():
         }
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added")
-        return redirect(url_for("get_tasksadmin"))
+        return redirect(url_for("get_tasks"))
         
     tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
     usernames = mongo.db.users.find().sort("username", 1)

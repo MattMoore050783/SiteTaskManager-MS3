@@ -62,7 +62,7 @@ def register():
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "role": "user"
+            "isAdmin": False
         }
         mongo.db.users.insert_one(register)
 
@@ -79,6 +79,7 @@ def profile(username):
     if session["user"]:
         username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+        
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
@@ -95,15 +96,21 @@ def logout():
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
-    tasks = list(mongo.db.tasks.find())
-    return render_template("tasks.html", tasks=tasks)
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    tasks = list(mongo.db.tasks.find({"is_complete" : False}))
+    tasksuser=list(mongo.db.tasks.find({"username" : session["user"]}))
+    return render_template("tasks.html", tasks=tasks, user=user, tasksuser=tasksuser)
 
 
 @app.route("/")
 @app.route("/completedtasks")
 def completedtasks():
-    tasks = list(mongo.db.tasks.find())
-    return render_template("completed_tasks.html", tasks=tasks)
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    tasks = list(mongo.db.tasks.find({"is_complete" : True}))
+    tasksuser=list(mongo.db.tasks.find({"username" : session["user"]}))
+    return render_template("completed_tasks.html", tasks=tasks, user=user, tasksuser=tasksuser)
 
 
 @app.route("/add_task", methods=["GET", "POST"])

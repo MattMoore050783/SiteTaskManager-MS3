@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="black-text text-darken-4 center-align">Manage Tasks</h3>  
-
-{% for task in tasks%}
-<ul class = "collapsible popout" data-collapsible = "accordion">
-    <li>
-       <div class = "collapsible-header dropdown">
+    <h3 class="black-text text-darken-4 center-align">Manage Tasks</h3>  
+        <abbr title=""></abbr>
+    {% if user.isAdmin == True %}
+        {% for task in tasks %} 
+            <ul class = "collapsible popout" data-collapsible = "accordion">
+            <li>
+            <div class = "collapsible-header dropdown">
             <i class="fas fa-caret-down"></i> 
                 <div class="container">
                     <div>
@@ -20,10 +21,10 @@
                     </div>
                     <div>
                     <b>Due Date:</b> <div class="dropdown-menu">{{ task.due_date }}  </div>
-                    </div>
+                    </div> 
                 </div>
-       </div>
-       <div class = "collapsible-body dropdown">
+            </div>
+            <div class = "collapsible-body dropdown">
             <div class="col l12>">
             <b>Task Description:</b> <div class="dropdown-menu">{{ task.task_description }}  </div>
             </div>
@@ -33,12 +34,44 @@
                 <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn-small red darken-1">Delete</a>
                 </div>
             
-        </div>
+            </div>
         
-    </li>
-
-</ul>
-{% endfor %}
-
-
+            </li>
+            </ul>
+        {% endfor %}    
+    {% else %}
+        {% for tasksuser in tasksuser if tasksuser.is_complete == False %}   
+         <ul class = "collapsible popout" data-collapsible = "accordion">
+        <li>
+        <div class = "collapsible-header dropdown">
+        <i class="fas fa-caret-down"></i> 
+            <div class="container">
+                <div>
+                <b>Tasktype:</b><div class="dropdown-menu">{{ tasksuser.tasktype }}</div>
+                </div>
+                <div>
+                <b>Username:</b><div class="dropdown-menu">{{ tasksuser.username }}</div>
+                </div>
+                <div>
+                <b>Site:</b><div class="dropdown-menu"> {{ tasksuser.site }} </div>
+                </div>
+                <div>
+                <b>Due Date:</b> <div class="dropdown-menu">{{ tasksuser.due_date }}  </div>
+                </div> 
+            </div>
+        </div>
+        <div class = "collapsible-body dropdown">
+        <div class="col l12>">
+        <b>Task Description:</b> <div class="dropdown-menu">{{ tasksuser.task_description }}  </div>
+        </div>
+            <div class="card-action right-align">
+                <a href="{{ url_for('complete_task', task_id=tasksuser._id) }}" class="btn-small green">Complete</a>
+            </div>
+        
+        </div>
+    
+        </li>
+        </ul>
+        {% endfor %} 
+    {% endif %} 
 {% endblock %}

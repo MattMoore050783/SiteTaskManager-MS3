@@ -7,7 +7,7 @@
         <abbr title=""></abbr>
     {% if user.isAdmin == True %}
         {% for task in tasks %} 
-            <ul class = "collapsible popout" data-collapsible = "accordion">
+            <ul class = "collapsible" data-collapsible = "accordion">
             <li>
             <div class = "collapsible-header dropdown">
             <i class="fas fa-caret-down"></i> 
@@ -41,7 +41,7 @@
         {% endfor %}    
     {% else %}
         {% for tasksuser in tasksuser if tasksuser.is_complete == True %}   
-         <ul class = "collapsible popout" data-collapsible = "accordion">
+         <ul class = "collapsible" data-collapsible = "accordion">
         <li>
         <div class = "collapsible-header dropdown">
         <i class="fas fa-caret-down"></i> 

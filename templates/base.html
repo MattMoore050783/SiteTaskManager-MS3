@@ -14,7 +14,7 @@
     <title>Site Task Manager</title>
 </head>
 <body>
-    {% if session.user|lower == "admin"|lower %}
+    {% if session.isAdmin == True %}
     <header>
         <!-- top navbar -->
 		<nav class="nav-extended text-shadow" style="background-color: rgba(255,255,255, 0.75)!important;">

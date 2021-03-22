@@ -91,6 +91,7 @@ def logout():
     # remove user from session cookie
     flash("You are logged out of Site Task Manager")
     session.pop("user")
+    session.pop("isAdmin")
     return redirect(url_for("login"))
 
 
@@ -102,6 +103,15 @@ def get_tasks():
     tasks = list(mongo.db.tasks.find({"is_complete" : False}))
     tasksuser=list(mongo.db.tasks.find({"username" : session["user"]}))
     return render_template("tasks.html", tasks=tasks, user=user, tasksuser=tasksuser)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    tasks = list(mongo.db.tasks.find({"$text": {"$search": query}, "is_complete" : True}))
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    return render_template("completed_tasks.html", tasks=tasks, user=user)
 
 
 @app.route("/")
@@ -152,7 +162,8 @@ def edit_task(task_id):
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Updated")
-
+        return redirect(url_for("get_tasks"))
+        
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     tasktypes = mongo.db.tasktypes.find().sort("tasktype_name", 1)
     usernames = mongo.db.users.find().sort("username", 1)

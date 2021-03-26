@@ -75,6 +75,7 @@ From the users perspective:-
 - I need to site to have admin access and standard user access.
 - I need standard user access locked down so data is only relevant to that user.
 - I need admin access to give full access to the website.
+- As admin I need to be able to search completed tasks.
 
 ---
 
@@ -97,7 +98,10 @@ The background image used for the site was a background of the sky and machines 
 Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pdf)
 
 **Design Changes to Wireframes**
-1. 
+- New Background image used which was clearer on all size screens.
+- Changed the layout of the tasks information to go vertically instead of horizontal.
+- Removed Social Media links from footer - not required just to software being used internally only.
+- isAdmin field added to the user table is database design. This was a Boolean field. This can only be assigned to true by logging into mongodb as the system admin.
 
 ---
 
@@ -105,28 +109,46 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
 
 ### Existing Features
 
-- Type
+- The navigation menu shows at the top but shrinks to a burger on smaller devices and shows on the right side of the screen.
+- Users can login and register to the system which will give them standard user access.
+- Admin access must be given by the system administrator with access to MongoDB
+- Different menu options show between admin and standard user. 
+- Admin users have access to all tasks for all users, all completed tasks for all users and management of tasktypes and sites.
+- Standard users have access to there own tasks that have been assigned by a manager and there own completed tasks.
+- Tasks are written in collapsible headers that can be expanded to view more information on the task.
+- When a user logs in, the username and isAdmin is stored in a session variable in a cookie until the user logs out.
+- The footer is pinned to the bottom of all pages.
+- CRUD can be done by admin users on tasks, tasktypes and sites.
+- Edit and Delete buttons are hidden for standard users, only admin have access to these buttons on manage tasks.
+- Complete button is the only button shown to standard users.
+- Sites and Tasktypes and Users are linked via the database when adding a new task.
+- All fields must be completed when adding a task apart from the completion fields.
+- Fields are checked when adding a task and marked red if not filled out.
+- The due date field is DD/MM/YYYY - A data selector is always used to pick the date to avoid any data mismatches.
+- A search function is only available for admin users on completed tasks so they can search on Product Descriptions and tasktypes for keywords.
 
 
 ### Features Left To Implement
 
-- type
+- Pagination needs to be added as the database grows on complete tasks.
+- Admin users can authorise other users in the database to be admin via user management
+- Reports Menu to be added to Admin users so they can run reports on users and in date ranges.
 
 ---
 
 ## Technologies Used
 
-- Boostrap 4
-  - Bootstrap 4 was used for the dino info page to create rows and margins.
+- Materialize
+  - Materialize was used for page structures and features like collapisble tasks and cards.
 
 - HTML  
   - HTML was used for the main structure of the website.
 
-- JavaScript
-  - Javascript was used for all pages to make them more interactive to the user.
+- JQuery
+  - JQuery was used for materialize features that needed some javascript function - Side Menu, Collapsible.
 
 - CSS
-  - CSS was used to style and change sizes and positions of different items where Bootstrap couldn't be used.
+  - CSS was used to style and change sizes and positions of different items where materialize couldn't be used.
 
 - Google Chrome
   - Google Chrome Inspect and Developer tools was used for examining the website on different devices.
@@ -135,7 +157,7 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
   - Google fonts was used for the font of the website.
 
 - Font Awesome
-  - Font Awesome was used for the icons for social media - Instagram, Twitter and Linked In.
+  - Font Awesome was used for the icons on the forms.
 
 - VS Code 
   - VS Code was used as the development tool to create all pages. Different add-ons were used in VS Code to aid my developement. These add-ons included were:-

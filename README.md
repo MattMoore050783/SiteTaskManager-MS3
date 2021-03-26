@@ -241,7 +241,9 @@ I also carried the following addtional testing:-
 |Deleted tasks as a admin user| deleted tasks no longer showing on site and MongoDB| N/A |
 |Tested diferent user logins and registrations and checked the session cookies in google chrome| logins working correct and cookies and users added to MongoDB | N/A|
 |Slack users testing| Button changed from Edit to confirm|Button Text changed |
-| | | |
+|Slack users - Href for company logo not linked| Didn't link to any page|Linked logo to manage tasks page |
+|Logo not showing alt if not displaying | nothing showed|alt added in html |
+| Tested Login of a user who already existed|User didn't added to the database and flash message showed user already exists | N/A |
 
 
 ### Code Validation
@@ -254,61 +256,42 @@ W3C Markup Validation Service and W3C CSS Validation Service was used for valida
 
 ### Live Website Link
 
-https://mattmoore050783.github.io/Dinosaurs-MS2/index.html
+https://site-task-manager-ms3.herokuapp.com/
  
 The website link was created by doing the following steps.
 
- 1. Click on Settings which is located at the top of the page.
- 2. Scroll down to the GitHub pages.
- 3. Click the dropdown menu under source and select the Master Branch as the source
- 4. Scroll through the page to find the site link.
+1. Type
 
 ### Repository Link
 
-https://github.com/MattMoore050783/Dinosaurs-MS2
+https://github.com/MattMoore050783/SiteTaskManager-MS3
 
 ### Running Code Locally
 
-To run this website and code on your local device, follow the below steps.
-
-1. Go to repository Dinosaurs-MS2 on github.
-2. Click Clone or Download.
-3. Download the Zip File.
-4. Unzip the downloaded zip file on the local device.
-5. Run the index.html file via your web browser.
+Type
 
 ---
 
 ## Credits
 
-### Content
-
 ### Code
 
 I used the following links to help my coding:-
-- Code Institue CV project for help with the EMail.JS and Google Map API Connectors and configuration.
-- https://www.w3schools.com/default.asp - Used the extra information on Javascript to help with my coding.
-- https://stackoverflow.com/  I used this site to source various coding when i was struggling with getting my code to work.
-- https://stackoverflow.com/questions/6164507/change-the-content-of-a-div-based-on-selection-from-dropdown-menu - I used this link to help show the information from my dinosaurs when using a dropdown combo box.
-- https://www.youtube.com/watch?v=vEROU2XtPR8 - I used this link for extra tuition on javascript.
-- https://www.youtube.com/watch?v=ZniVgo8U7ek - I used this site mostly to help with the setup of my board and used the code to setup my game and adopt accordingly.
-- https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript - I used this site to get different coding ideas for the modal congratulations pop up.
-- https://www.youtube.com/watch?v=v-RC3kJCL4c - I used these different lessons to give me more information on JQuery.
-- https://www.youtube.com/channel/UCHRp19HU7Y2LwfI0Ai6WAGQ - I used this channel for various information on Janascript.
-- https://validator.w3.org/#validate_by_uri - I used this site to validate the HTML.
-- https://jigsaw.w3.org/css-validator/ - I used this to validate the CSS.
-- http://ami.responsivedesign.is/ - I used this to help check the responsive design of my website.
-- https://www.favicon-generator.org/ - I used this to generate my favicon.
+- Code Institue task project for basic setup and and linking to MongoDB
+- https://www.tutorialspoint.com/materialize/index.htm - For Materialize tips
+- https://werkzeug.palletsprojects.com/en/1.0.x/utils/ - for Werkzeug tips
+- https://palletsprojects.com/p/jinja/ - for Jinja coding
+- https://stackoverflow.com/ - for various issues when writing queries in Python.
+- https://www.w3schools.com/python/default.asp - for extra help and tuition with Python.
+- https://www.youtube.com/watch?v=dam0GPOAvVI - for extra help with python and flask to understand it better.
 
 ### Content
-I used google and the following websites to get information on the dinosaurs:-
-- https://www.kids-dinosaurs.com/dinosaur-facts.html
-- https://www.sciencekids.co.nz/sciencefacts/dinosaurs.html
 
+All content for the site was based on what would be required by Paul John employees if this app was to be live.
 
 ### Media
 
-All pictures were taken from various sources from google searches for dinosaur backgrounds and the dinosaurs. 
+All pictures were taken from Paul John on our existing website which I also developed
 
 ### Acknowledgements
 
@@ -316,7 +299,7 @@ Many Thanks to the below for the help and guidances throughout my project:-
 - My Mentor Maranatha
 - Code Institues support team for increasing my hand in date and being supportive while i was working my day to day job through the pandemic.
 - The slack community for feedback on my website. 
-- Code Institute and the learning programme for Javascript/Jquery/Google Maps API's and EMail.JS
+- Code Institute and the learning programme Python and the task mini project.
 
 
 

@@ -220,23 +220,28 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
 
 ### Responsive Testing
 
-To check how the website runned on different devices I used Am-I-Responsive and Inspect in Google Chrome Developer Tools. I also pushed out the site regular to the live area and access the link on my IPhone, Ipad and Macbook. While doing these tests I did the following:-
+To check how the site ran on different devices I used Am-I-Responsive and Inspect in Google Chrome Developer Tools. I also pushed out the site regular to the live area and accessed the link on my IPhone, Ipad and Macbook. While doing these tests I did the following:-
 
 |  Test | Result  |  Extra Coding Required |
 |---|---|---|
-| | | |
-
+| Navigation Menu shows burger on small devices| Navigation menu working correctly| N/A|
+| Task information shows on each line in the card on all devices| Tested on all devices| N/A|
+| Background Image to show correctly on all devices|Background didn't show correctly on Ipad on Am-I-Responsive |changed background options in CSS |
+| Manage Tasktypes and Sites boxed should shrink correct to show on mobiles and tablets|All boxes showed correctly | N/A|
+| Buttons should show on the right side when viewing tasks|all buttons showing correctly |N/A |
+| Footer showing correctly on all devices| Footer didn't show correctlyon some pages| Added a top margin to the footer|
 
 ### Additional Testing
 
 I also carried the following addtional testing:-
-- My son tested the game using my Iphone, Ipad and on a windows laptop on chrome and on safari on macbook, when turning the cards on the iphone and ipad and on safari the card wasn't showing the dinosaur - Webkit was added in the CSS to fix the issue.
-- Members of the slack community also tested my website, all results were positive apart from a couple of issues with the sign up form and a scroller which is fixed.
-
-Testing carried out using the console for Javascript:-
-- I used console.log on various variables to see how they were updating when the game was being played, the following variables were tested in console.log
-1. moves - moves was tested to make sure the number was increasing everytime the user turned over 2 cards.
-2. count - count was tested to make sure it increased by one everytime the user matched two cards
+|  Test | Result  |  Extra Coding Required |
+|---|---|---|
+|Adding users,tasktypes and tasks | All showed correctly on the site and in mongoDB| N/A |
+|Changed tasks as a admin user via the edit button| all changes showed correctly on the site and mongodb| N/A|
+|Deleted tasks as a admin user| deleted tasks no longer showing on site and MongoDB| N/A |
+|Tested diferent user logins and registrations and checked the session cookies in google chrome| logins working correct and cookies and users added to MongoDB | N/A|
+|Slack users testing| Button changed from Edit to confirm|Button Text changed |
+| | | |
 
 
 ### Code Validation

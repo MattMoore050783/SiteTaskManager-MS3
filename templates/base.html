@@ -19,7 +19,7 @@
         <!-- top navbar -->
 		<nav class="nav-extended text-shadow" style="background-color: rgba(255,255,255, 0.75)!important;">
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo"><img src="../static/images/logo.png" width="140" height="auto"></a>
+				<a href="{{ url_for('get_tasks') }}" class="brand-logo"><img src="../static/images/logo.png" width="140" height="auto"></a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right black-text"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a class ="black-text" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>

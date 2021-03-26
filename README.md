@@ -94,8 +94,7 @@ The background image used for the site was a background of the sky and machines 
 
 ### Wireframes
 
-Play Game - index.html - Browser - [MainBrowserHome](Documentation/Wireframes/mainpagegame-index.html.pdf)
-
+Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pdf)
 
 **Design Changes to Wireframes**
 1. 

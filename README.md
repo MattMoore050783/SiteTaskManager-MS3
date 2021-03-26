@@ -81,7 +81,7 @@ From the users perspective:-
 
 ### Styling
 
-The website must be easy on the eye but also be able to see the different fields, forms and buttons. I used a clear white see through background for forms and cards, used black, red or green for the buttons so they stood out and used black textColour. The background image was an image that was construction related with a good colour scheme to match against.
+The website must be easy on the eye but also you must be able to see the different fields, forms and buttons. I used a clear white see through background for forms and cards, used black, red or green for the buttons so they stood out and used black text Colour. The background image was an image that was construction related with a good colour scheme.
 
 The below colour scheme was used for the menus and text.
 
@@ -150,6 +150,17 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
 - CSS
   - CSS was used to style and change sizes and positions of different items where materialize couldn't be used.
 
+- Python 
+  - Flask
+    - Flask was used for rendering template, URI's, Redirects, Requests and flash messages.
+  - Bson
+    - BSON was used to access the data in MongoDB and to access ID's
+  - Werkzeug
+    - Werkzeug was user to hash password entry when registering to the site and encrypting on MongoDB.
+
+- MongoDB
+  - MongoDB was used to store all data for the website.
+
 - Google Chrome
   - Google Chrome Inspect and Developer tools was used for examining the website on different devices.
 
@@ -169,6 +180,7 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
     - Markdown Preview Enhancer - Allows you to see your markdown file as you type.
     - Prettier - Allows you to Beautify your CSS.
 
+- Balsamiq was used to create the wireframes
 
 ### Version Control
 
@@ -178,38 +190,41 @@ Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pd
 - Github
   - Github was used to store the repositry online. All Adds/Commits go to this file online. 
 
+- Heroku
+  - Heroku was used to store and run the application, heroku was linked to github to auto update.
+
 ---
 
 ## Testing
 
 ### Testing User Stories
 
-| Test  |  Result | Extra Coding Required  |
+| Story  |  Test | Extra Coding Required  |
 |---|---|---|
-|The site needs to easy to use and navigate with it being aimed at the younger generation|Testing navigating through pages, making the game easy to understand and play | Extra coding added to show number of matches along with moves|
-|Thes sites colour screen and background needs to be dinosaur related but easy on the eye| Clear background added to the site and green colour sheme to match| Picture changed mid project to a more crisp background jungle image|
-|The pictures on the site need to be clear so the user can identify the dinosaur type easily| Images made clear as they can in the game to fit the screen, bigger pictures added to the dinfo info page to show more detail, Tested the pictures on various devices| N/A|
-|The game needs to be easy to understand and play but also be a challenge based on the users memory|Tested how the instructions showed on all devices and easy to see the cards on all devices, tested by pushing out toe github and testing on my iphone, ipad and macbook and also tested using inspect on google chrome on different devices | N/A|
-|The selector on the dinosaur information page needs to be easy to use and understand| Tested the dropdown menu on all devices to make sure it showed ok| Added extra margins so it was showed at the top of page over the picture and facts.|
-|The map needs to be clear and concise and fill the area making it easy for the user to use| Tested the map to make sure it showed clear on all devices and was easy to read the markers|N/A |
-|The sign up form needs to be easy to enter information to attract more people to dinosaur discoveries| Tested the form entry on all devices and e-mails being received to the test account from E-mail JS| added less margin on mobile and tablet devices to the sign up form filled the device screen more|
-|Dinosaur Discoveries needs to be the goto website for everything dinosaurs| Thorough tested the site myself and added the site on the peer-code-review on slack so other users could test| N/A|
+|The site needs to be easy to use and navigate due to the nature of business it will be used in| Tested all menus on all devices to make sure they were easy to understand and follow|N/A |
+|The site needs to be easy to view on all devices| Tested the site on all devices to make sure it displayed correctly|Changed some size displays of card to show on multiple lines on smaller devices |
+|The background and logo need to be construction and Paul John Group related| Tested the background and logo on all devices|Background size changed to show better on Ipad and IPhone |
+|The system must have a clear difference between what a standard user can access and what a admin user can access|Logged in as different users to make sure different menus are displayed | Created isAdmin on MongoDB and used this in a session variable and jinja to distinguish between isAdmin being true or false|
+|Other Database fields and tables must be easy to access to CRUD via the website for the admin user| Accessed Tasktypes and sites to managed these fields on all devices| N/A|
+|The website and database access needs to be quick| Tested logging in on different devices|N/A |
+|There must be a clear difference to view open tasks and completed tasks| Tested Manage Tasks and Completed Tasks|Extra Jinja and Python added to distinguish IsComplete = True or false, two variables created for user and admin for tasks and completed tasks |
+|I need to be easily access a task and complete it| tested as a user and admin by access a task and completing it| N/A|
+|I need to be find it easy to add tasks to database for different users and sites|Tested the add task page on different devices | Jquery coding added to show required fields in red if not filled in|
+|I need to be able to add different tasktypes and assign them to tasks| added tasktypes from the menu and then added a new task and tested the dropdown menu tomake sure the new tasktype showed| N/A|
+|I need to be able to search completed tasks based on words in the description|Tested various searchs with different words |added jinja code sothe search function showed for only admin users only |
+|I need to be able to register standard users to the system| register different users from the company and made CM's Admins in Mongo DB and left the others as standard users| N/A|
+|I need to site to have admin access and standard user access| Initially had it querying against user 'Admin' but only this one user had admin rights|Added isAdmin - Boolean field so more users could be admin users then changed my python and jinja coding on tasks and completed tasks and the menu on base.html |
+|I need standard user access locked down so data is only relevant to that user| initially checked against user 'admin' on the session cookie| coded to checked against isAdmin =False and the username logged in against the session variable and user on mongoDB|
+|I need admin access to give full access to the website| Checked against isAdmin to show more menu options on the navigation and show all tasks for all users on manage tasks and completed tasks|N/A |
+|As admin I need to be able to search completed tasks| Tested with various searches on the test data on various devices| error in the card showing the search going onto multiple lines, corrected the code.|
 
 ### Responsive Testing
 
-To check how the website runned on different devices I usedD Am-I-Responsive and Inspect in Google Chrome Developer Tools. I also pushed out the site regualr to the live area and access the link on my IPhone, Ipad and Macbook. While doing these tests I did the following:-
+To check how the website runned on different devices I used Am-I-Responsive and Inspect in Google Chrome Developer Tools. I also pushed out the site regular to the live area and access the link on my IPhone, Ipad and Macbook. While doing these tests I did the following:-
 
 |  Test | Result  |  Extra Coding Required |
 |---|---|---|
-|Game instructions and Title and Game board to show properly on different devices so the users doesnt have to scroll down to see the cards when playing| Tested using my opwn Iphone and Ipad and Macbook, also tested using google chrome developer tools, the cards and results were showing too big on mobile| Made the cards div and text for the instructions div smaller in mobile view and stack the two sections on top of each other|
-|Pictures to show properly on all views on the dinfo info page| I tested the pictures on various devices to make sure they were showing ok, the picture was showing properly when shrinking down to tablet and mobile view| I changed the dimensions of the picture to accomondate the size of the screen using percentages|
-|The facts and picture should be easy to read on all devices | When testing on smaller devices, when shrinking down the text was too small next to the picture | When shrinking down to smaller tablet and phone size, I made col1 stack on top of col2 so it looked better and easier to read on smaller devices|
-|The map shpould fill the screen all devices | Tested the map on all devices again | Wrote the map size to a % to show on all screens|
-|The button should change colour and music play when the user completes the sign up form | Tested on all devices to make sure it works | N/A |
-|The navigation menu should show text on larger screens and tablets and the burger on smaller devices | The text was overlapping when going down to a smaller tablet | Text size changed on media queries for tablets|
-|The sign up page should shrink down to fit all sizes|Tested on all devices| Margins changed on smaller devices to make the sign up form fit better|
-The footer should be pinned at the bottom of all pages| Tested on all devices and am-i-responsive, when showing on am-i-responsive there was small gap between the footer and the bottom of the page| Margin for above footer changed on large devices|
-|The moves, matches and stars should show clear on all device | When viewing on smaller devices there text was overlapping | Made the text smaller and added padding to avoid the text overlap|
+| | | |
 
 
 ### Additional Testing

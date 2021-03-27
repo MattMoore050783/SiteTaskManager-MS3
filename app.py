@@ -18,6 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Login Function
 @app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -47,8 +48,9 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-    
 
+    
+# Register Function
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -73,6 +75,7 @@ def register():
     return render_template("register.html")
 
 
+# Profile Page Function
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -86,6 +89,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+# Logout Function
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -95,6 +99,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# Get Tasks Function - tasks - admin tasksuser - standard user
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
@@ -105,6 +110,7 @@ def get_tasks():
     return render_template("tasks.html", tasks=tasks, user=user, tasksuser=tasksuser)
 
 
+# SearchFunction
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -114,6 +120,7 @@ def search():
     return render_template("completed_tasks.html", tasks=tasks, user=user)
 
 
+# Completed Tasks Function - tasks - admin tasksuser - standard user
 @app.route("/")
 @app.route("/completedtasks")
 def completedtasks():
@@ -124,6 +131,7 @@ def completedtasks():
     return render_template("completed_tasks.html", tasks=tasks, user=user, tasksuser=tasksuser)
 
 
+# Add Task Function 
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":
@@ -147,6 +155,7 @@ def add_task():
     return render_template("add_task.html", tasktypes=tasktypes, usernames=usernames, sites=sites)
 
 
+# Edit Task Function
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     if request.method == "POST":
@@ -171,6 +180,7 @@ def edit_task(task_id):
     return render_template("edit_task.html", task=task, tasktypes=tasktypes, usernames=usernames, sites=sites)
 
 
+# Complete task function
 @app.route("/app_user/<task_id>", methods=["GET", "POST"])
 def complete_task(task_id):
     if request.method == "POST":
@@ -193,6 +203,7 @@ def complete_task(task_id):
     return render_template("complete_task.html", task=task)
 
 
+# Delete Task Function
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
@@ -200,12 +211,14 @@ def delete_task(task_id):
     return redirect(url_for("get_tasks"))
 
 
+# Get Sites Function
 @app.route("/get_sites")
 def get_sites():
     sites = list(mongo.db.sites.find().sort("site_name", 1))
     return render_template("sites.html", sites=sites)
 
 
+# Add Site Function
 @app.route("/add_site", methods=["GET", "POST"])
 def add_site():
     if request.method == "POST":
@@ -219,6 +232,7 @@ def add_site():
     return render_template("add_site.html")
 
 
+# Edit Site Function
 @app.route("/edit_site/<site_id>", methods=["GET", "POST"])
 def edit_site(site_id):
     if request.method == "POST":
@@ -233,6 +247,7 @@ def edit_site(site_id):
     return render_template("edit_site.html", site=site)
 
 
+# Delete Site Function
 @app.route("/delete_site/<site_id>")
 def delete_site(site_id):
     mongo.db.sites.remove({"_id": ObjectId(site_id)})
@@ -240,12 +255,14 @@ def delete_site(site_id):
     return redirect(url_for("get_sites"))
 
 
+# Get Tasktypes Function
 @app.route("/get_tasktypes")
 def get_tasktypes():
     tasktypes = list(mongo.db.tasktypes.find().sort("tasktype_name", 1))
     return render_template("tasktypes.html", tasktypes=tasktypes)
 
 
+# Add Tasktype Function
 @app.route("/add_tasktype", methods=["GET", "POST"])
 def add_tasktype():
     if request.method == "POST":
@@ -259,6 +276,7 @@ def add_tasktype():
     return render_template("add_tasktype.html")
 
 
+# Edit Tasktype Function
 @app.route("/edit_tasktype/<tasktype_id>", methods=["GET", "POST"])
 def edit_tasktype(tasktype_id):
     if request.method == "POST":
@@ -273,6 +291,7 @@ def edit_tasktype(tasktype_id):
     return render_template("edit_tasktype.html", tasktype=tasktype)
 
 
+# Delete Tasktype Function
 @app.route("/delete_tasktype/<tasktype_id>")
 def delete_tasktype(tasktype_id):
     mongo.db.tasktypes.remove({"_id": ObjectId(tasktype_id)})

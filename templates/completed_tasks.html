@@ -4,6 +4,7 @@
 {% block content %}
     <h3 class="black-text text-darken-4 center-align">Completed Tasks</h3>  
     {% if user.isAdmin == True %}
+    <!-- Search Menu -->
     <div class="row card-panel">
         <form action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row align-wrapper center-align">

@@ -5,6 +5,7 @@
         <abbr title=""></abbr>
     {% if user.isAdmin == True %}
         {% for task in tasks %} 
+        <!-- Read Only Menu Items -->
             <ul class = "collapsible" data-collapsible = "accordion">
             <li>
             <div class = "collapsible-header dropdown">
@@ -43,6 +44,7 @@
         {% for tasksuser in tasksuser if tasksuser.is_complete == False %}   
          <ul class = "collapsible" data-collapsible = "accordion">
         <li>
+        <!-- Read Only Menu Items -->
         <div class = "collapsible-header dropdown">
         <i class="fas fa-caret-down"></i> 
             <div class="container">

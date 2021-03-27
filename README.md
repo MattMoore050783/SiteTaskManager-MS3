@@ -320,13 +320,13 @@ Heroku Configuration
     1. Search for your repository using the form provided.
 6. Once you have connected your GitHub repository:
     1. Navigate to the "Settings" tab:
-        1. Scroll to the section "Config Vars" this is whereyou will have to tell Heroku what the variables are:
+        1. Scroll to the section "Config Vars" this is where you will tell Heroku what the variables are:
             1. Input data from env.py in the key value section: (e.g. SECRET_KEY in the first box, <YOUR SECRET_KEY> in the second box)
             2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
     2. Navigate back to the "Deploy" tab:
         1. Scroll to the "Manual Deploy" tab:
-            1. Select the branch you wish to deploy (master is default)
-            2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
+            1. Select the branch you wish to deploy.
+            2. Click the "Deploy Branch" button. 
 
 ---
 

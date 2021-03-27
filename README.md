@@ -95,7 +95,7 @@ The background image used for the site was a background of the sky and machines 
 
 ### Wireframes
 
-Wireframes Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pdf)
+Wireframes/Database Tables Link - [Wireframes](Documentation/Wireframes/WireframesandDBDesign.pdf)
 
 **Design Changes to Wireframes**
 - New Background image used which was clearer on all size screens.
@@ -248,7 +248,9 @@ I also carried the following addtional testing:-
 
 ### Code Validation
 
-W3C Markup Validation Service and W3C CSS Validation Service was used for validating the code.
+- W3C Markup Validation Service for HTML.
+- W3C CSS Validation Service was used for validating the code.
+- http://pep8online.com/ - For Validation Python Code.
 
  ---
 
@@ -257,10 +259,6 @@ W3C Markup Validation Service and W3C CSS Validation Service was used for valida
 ### Live Website Link
 
 https://site-task-manager-ms3.herokuapp.com/
- 
-The website link was created by doing the following steps.
-
-1. Type
 
 ### Repository Link
 
@@ -268,7 +266,67 @@ https://github.com/MattMoore050783/SiteTaskManager-MS3
 
 ### Running Code Locally
 
-Type
+To deploy the project the following is required:-
+- Python3
+- Github account
+- Heroku Account
+- MongoDB Account
+
+To create a clone follow the below steps:- 
+
+Github
+1. Login to github and find the repository.
+2. Click Code and open with Github Desktop.
+3. Follow the prompts in the GitHub Desktop Application.
+
+To work with the clone please follow the below steps:-
+1. Install requirements.txt with the following code in the terminal window
+  > pip3 install -r requirements.txt.
+2. Create the Cluster in MongoDB.
+3. Create the database in MongoDB
+4. Add the following collections to the database
+  - sites
+  - tasks
+  - users
+  - tasktypes
+5. Create Enviroment Variables
+  - Create a .gitignore file in the root directory of the project.
+  - Create a file in the root directory called "env.py". This contains all of your envornment variables. Your env.py file should look like the following:
+> Import os
+>
+> os.environ.setdefault("IP", "<IP TO USE>")
+>
+> os.environ.setdefault("PORT", "<PORT TO USE>")
+>
+> os.environ.setdefault("SECRET_KEY", "<ADD YOUR SECRET KEY>")
+>
+> os.environ.setdefault("MONGO_URI", "<ADD YOUR MONGO URI>")
+>
+> os.environ.setdefault("MONGO_DBNAME", "<ADD YOUR DATABASE NAME>")
+
+6. Add env.py to the gitignore file
+
+7. Create the procfile which is required when using Heroku.
+
+To run the application from terminal use the python3 app.py command.
+
+Heroku Configuration
+
+1. Open [Heroku](http://heroku.com/).
+2. Login or signup for Heroku.
+3. Once logged in create a new app and select the region. 
+4. Deployment method "GitHub" 
+5. Select "connect to GitHub" and follow the on screen instructions. Once connected to your Github:
+    1. Search for your repository using the form provided.
+6. Once you have connected your GitHub repository:
+    1. Navigate to the "Settings" tab:
+        1. Scroll to the section "Config Vars" this is whereyou will have to tell Heroku what the variables are:
+            1. Input data from env.py in the key value section: (e.g. SECRET_KEY in the first box, <YOUR SECRET_KEY> in the second box)
+            2. Input all data for IP, PORT, SECRET_KEY, MONGO_DBNAME & MONGO_URI
+    2. Navigate back to the "Deploy" tab:
+        1. Scroll to the "Manual Deploy" tab:
+            1. Select the branch you wish to deploy (master is default)
+            2. Click the "Deploy Branch" button. (This may take some time as Heroku uploads the app to their servers.) 
 
 ---
 
